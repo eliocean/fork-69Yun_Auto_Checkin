@@ -3,12 +3,11 @@ name: Checkin
 on:
   schedule:
     - cron: '0 20 * * *'  # 每天 UTC 时间 20:00 执行（北京时间 04:00）
-  workflow_dispatch:  # 允许手动触发
+  workflow_dispatch: # 允许手动触发
 
 jobs:
   checkin:
     runs-on: ubuntu-latest
-
     steps:
       - name: 📥 检出代码
         uses: actions/checkout@v4
@@ -28,11 +27,13 @@ jobs:
           CHAT_ID: ${{ secrets.CHAT_ID }}
           USER1: ${{ secrets.USER1 }}
           PASS1: ${{ secrets.PASS1 }}
+          USER2: ${{ secrets.USER2 }}
+          PASS2: ${{ secrets.PASS2 }}
         run: python checkin.py
 
       - name: 📌 执行完成
         run: echo "签到任务已完成 ✅"
-        
+
   keepalive-workflow:
     name: Keepalive Workflow
     if: ${{ always() }}

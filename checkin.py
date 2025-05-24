@@ -45,6 +45,7 @@ def fetch_and_extract_info(domain, headers):
 # 读取环境变量并生成配置
 def generate_config():
     domain = "https://69yun69.com"
+    # domain = "https://proxy-69.69yun69.com"
     bot_token = os.getenv('BOT_TOKEN', '')
     chat_id = os.getenv('CHAT_ID', '')
     
@@ -123,6 +124,9 @@ def checkin(account, domain, bot_token, chat_id):
 
 # 主函数
 if __name__ == "__main__":
+    # 本地测试：从环境变量读取配置
+    # from dotenv import load_dotenv
+    # load_dotenv()
     config = generate_config()
     for account in config.get("accounts", []):
         print("📌 正在签到...")
