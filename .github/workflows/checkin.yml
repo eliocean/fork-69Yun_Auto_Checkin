@@ -19,7 +19,7 @@ jobs:
 
       - name: 📦 安装依赖
         run: |
-          pip install requests beautifulsoup4
+          pip install requests beautifulsoup4 dotenv
 
       - name: ✅ 运行签到脚本
         env:

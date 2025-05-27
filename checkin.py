@@ -77,7 +77,8 @@ def send_message(msg, bot_token, chat_id):
 # 登录并签到
 def checkin(account, domain, bot_token, chat_id):
     user, password = account['user'], account['pass']
-    account_info = f"🔹 地址: {domain}\n🔑 账号: {user}\n🔒 密码: {password}\n"
+    # account_info = f"🔹 地址: {domain}\n🔑 账号: {user}\n🔒 密码: {password}\n"
+    account_info = f"🔹 地址: {domain}\n🔑 账号: {user}\n"
 
     # 登录
     login_response = requests.post(
@@ -125,8 +126,8 @@ def checkin(account, domain, bot_token, chat_id):
 # 主函数
 if __name__ == "__main__":
     # 本地测试：从环境变量读取配置
-    # from dotenv import load_dotenv
-    # load_dotenv()
+    from dotenv import load_dotenv
+    load_dotenv()
     config = generate_config()
     for account in config.get("accounts", []):
         print("📌 正在签到...")
